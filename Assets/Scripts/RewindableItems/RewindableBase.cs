@@ -7,7 +7,24 @@ namespace Blank.GamePlay
 {
     public class RewindableBase : MonoBehaviour
     {
-        protected virtual void RecordData() { }
+        [SerializeField] protected int recordingFrameGap = 5;
+        protected int frameCounter = 1;
+        protected int lerpOverFrames;
+
+        protected void RecordData()
+        {
+            if(frameCounter == recordingFrameGap)
+            {
+                AddDataToRecordList();
+                frameCounter = 1;
+            }
+            else
+            {
+                frameCounter++;
+            }
+        }
+
+        protected virtual void AddDataToRecordList() { }
 
         protected virtual void StartRewind() { }
 

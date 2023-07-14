@@ -25,7 +25,8 @@ namespace Blank.GamePlay
         [SerializeField] float initalForce = 25;
 
         private List<RecordInstance> recordList;
-        private RecordInstance currentReadingRecordInstance;
+        private RecordInstance currentRecordInstance;
+        private RecordInstance targetRecordInstance;
 
         private void Start()
         {
@@ -36,7 +37,8 @@ namespace Blank.GamePlay
 
             recordList = new List<RecordInstance>();
             recordList.Capacity = RewindHandler.maxRecordArrayLength;
-            RecordData();
+            frameCounter = 1;
+            AddDataToRecordList();
 
             SubRewindEvents();
         }
@@ -46,7 +48,7 @@ namespace Blank.GamePlay
             UnSubRewindEvents();
         }
 
-        protected override void RecordData()
+        protected override void AddDataToRecordList()
         {
             if(recordList.Count < RewindHandler.maxRecordArrayLength)
             {
@@ -62,20 +64,50 @@ namespace Blank.GamePlay
         protected override void StartRewind()
         {
             rb.velocity = Vector3.zero;
+            rb.useGravity = false;
+            lerpOverFrames = frameCounter;
+            frameCounter = 1;
+            currentRecordInstance = new RecordInstance(transform.position, transform.rotation, rb.velocity);
+            targetRecordInstance = recordList[0];
+            rewinding = true;
         }
 
+        bool rewinding;
+        private void Update() {
+            if(rewinding)
+            {
+                float lerpValue = frameCounter/lerpOverFrames;
+                transform.position = Vector3.Lerp(transform.position, targetRecordInstance.position, 10 * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRecordInstance.rotation, 10 * Time.deltaTime);
+            }
+        }
+        
         protected override void Rewind()
         {
-            currentReadingRecordInstance = recordList[0];
-            transform.position = currentReadingRecordInstance.position;
-            transform.rotation = currentReadingRecordInstance.rotation;
-            if(recordList.Count > 1)
-                recordList.RemoveAt(0);
+            // float lerpValue = frameCounter/lerpOverFrames;
+            // transform.position = Vector3.Lerp(currentRecordInstance.position, targetRecordInstance.position, lerpValue);
+            // transform.rotation = Quaternion.Slerp(currentRecordInstance.rotation, targetRecordInstance.rotation, lerpValue);
+            if(frameCounter == lerpOverFrames)
+            {
+                frameCounter = 1;
+                lerpOverFrames = recordingFrameGap;
+                if(recordList.Count > 1)
+                    recordList.RemoveAt(0);
+                currentRecordInstance = targetRecordInstance;
+                targetRecordInstance = recordList[0];
+            }
+            else
+            {
+                frameCounter++;
+            }
         }
 
         protected override void EndRewind()
         {
-            rb.velocity = currentReadingRecordInstance.velocity;
+            frameCounter = recordingFrameGap - frameCounter;
+            rb.useGravity = true;
+            rb.velocity = currentRecordInstance.velocity;
+            rewinding = false;
         }
     }
 }
