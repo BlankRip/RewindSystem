@@ -13,14 +13,17 @@ namespace Blank.RewindSystem
         public static Action EndRewindEvent;
         public static Action RecoredEvent;
         public static int maxRecordArrayLength;
+        public static Transform rewindCenterPoint;
 
         private bool isRewinding;
         private InputAction rewindAction;
         [SerializeField] uint maxRecordArraySize = 150;
+        [SerializeField] Transform rewindCenter;  // Remove after player is added
 
         private void Awake()
         {
             maxRecordArrayLength = (int)maxRecordArraySize;
+            rewindCenterPoint = rewindCenter;
         }
 
         private void Start()

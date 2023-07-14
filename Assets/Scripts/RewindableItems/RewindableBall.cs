@@ -25,8 +25,7 @@ namespace Blank.GamePlay
         [SerializeField] float initalForce = 25;
 
         private List<RecordInstance> recordList;
-        private RecordInstance currentRecordInstance;
-        private RecordInstance targetRecordInstance;
+        private RecordInstance currentReadingRecordInstance;
 
         private void Start()
         {
@@ -37,18 +36,32 @@ namespace Blank.GamePlay
 
             recordList = new List<RecordInstance>();
             recordList.Capacity = RewindHandler.maxRecordArrayLength;
-            frameCounter = 1;
-            AddDataToRecordList();
 
-            SubRewindEvents();
+            SetUpDistanceBasedSubscription();
         }
         
         private void OnDestroy()
         {
-            UnSubRewindEvents();
+            if(rewindSubscribed)
+                UnSubRewindEvents();
         }
 
-        protected override void AddDataToRecordList()
+        private void Update()
+        {
+            UpdateDistanceBasedSubscription();
+        }
+
+        protected override void OnRewinEventSubscribe()
+        {
+            RecordData();
+        }
+
+        protected override void OnRewinEventUnSubscribe()
+        {
+            recordList.Clear();
+        }
+
+        protected override void RecordData()
         {
             if(recordList.Count < RewindHandler.maxRecordArrayLength)
             {
@@ -64,50 +77,20 @@ namespace Blank.GamePlay
         protected override void StartRewind()
         {
             rb.velocity = Vector3.zero;
-            rb.useGravity = false;
-            lerpOverFrames = frameCounter;
-            frameCounter = 1;
-            currentRecordInstance = new RecordInstance(transform.position, transform.rotation, rb.velocity);
-            targetRecordInstance = recordList[0];
-            rewinding = true;
         }
 
-        bool rewinding;
-        private void Update() {
-            if(rewinding)
-            {
-                float lerpValue = frameCounter/lerpOverFrames;
-                transform.position = Vector3.Lerp(transform.position, targetRecordInstance.position, 10 * Time.deltaTime);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRecordInstance.rotation, 10 * Time.deltaTime);
-            }
-        }
-        
         protected override void Rewind()
         {
-            // float lerpValue = frameCounter/lerpOverFrames;
-            // transform.position = Vector3.Lerp(currentRecordInstance.position, targetRecordInstance.position, lerpValue);
-            // transform.rotation = Quaternion.Slerp(currentRecordInstance.rotation, targetRecordInstance.rotation, lerpValue);
-            if(frameCounter == lerpOverFrames)
-            {
-                frameCounter = 1;
-                lerpOverFrames = recordingFrameGap;
-                if(recordList.Count > 1)
-                    recordList.RemoveAt(0);
-                currentRecordInstance = targetRecordInstance;
-                targetRecordInstance = recordList[0];
-            }
-            else
-            {
-                frameCounter++;
-            }
+            currentReadingRecordInstance = recordList[0];
+            transform.position = currentReadingRecordInstance.position;
+            transform.rotation = currentReadingRecordInstance.rotation;
+            if(recordList.Count > 1)
+                recordList.RemoveAt(0);
         }
 
         protected override void EndRewind()
         {
-            frameCounter = recordingFrameGap - frameCounter;
-            rb.useGravity = true;
-            rb.velocity = currentRecordInstance.velocity;
-            rewinding = false;
+            rb.velocity = currentReadingRecordInstance.velocity;
         }
     }
 }

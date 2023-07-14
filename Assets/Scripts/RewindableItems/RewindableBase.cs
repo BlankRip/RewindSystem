@@ -7,24 +7,42 @@ namespace Blank.GamePlay
 {
     public class RewindableBase : MonoBehaviour
     {
-        [SerializeField] protected int recordingFrameGap = 5;
-        protected int frameCounter = 1;
-        protected int lerpOverFrames;
+        [SerializeField] float requiredDistanceToRewindCenter = 100;
+        protected bool rewindSubscribed;
+        private bool usingDistanceBasedSubscrition;
+        private float distance;
+        private Coroutine unsubCoroutine;
+        private WaitForSeconds unsubWaitTime;
 
-        protected void RecordData()
+        protected void SetUpDistanceBasedSubscription()
         {
-            if(frameCounter == recordingFrameGap)
+            requiredDistanceToRewindCenter = requiredDistanceToRewindCenter * requiredDistanceToRewindCenter;
+            rewindSubscribed = false;
+            usingDistanceBasedSubscrition = true;
+            unsubCoroutine = null;
+            unsubWaitTime = new WaitForSeconds(5.0f);
+        }
+
+        protected void UpdateDistanceBasedSubscription()
+        {
+            distance = (transform.position - RewindHandler.rewindCenterPoint.position).sqrMagnitude;
+            if(distance < requiredDistanceToRewindCenter)
             {
-                AddDataToRecordList();
-                frameCounter = 1;
+                if(!rewindSubscribed)
+                    SubRewindEvents();
+                if(unsubCoroutine != null)
+                {
+                    StopCoroutine(unsubCoroutine);
+                    unsubCoroutine = null;
+                }
             }
-            else
+            else if(rewindSubscribed && unsubCoroutine == null)
             {
-                frameCounter++;
+                unsubCoroutine = StartCoroutine(UnSubRewindEventAfterAwhile());
             }
         }
 
-        protected virtual void AddDataToRecordList() { }
+        protected virtual void RecordData() { }
 
         protected virtual void StartRewind() { }
 
@@ -32,20 +50,39 @@ namespace Blank.GamePlay
 
         protected virtual void EndRewind() { }
 
+        protected virtual void OnRewinEventSubscribe() { }
+        protected virtual void OnRewinEventUnSubscribe() { }
+
         protected void SubRewindEvents()
         {
+            Debug.Log("Subbed");
             RewindHandler.RecoredEvent += RecordData;
             RewindHandler.StartRewindEvent += StartRewind;
             RewindHandler.RewindEvent += Rewind;
             RewindHandler.EndRewindEvent += EndRewind;
+
+            rewindSubscribed = true;
+            if(usingDistanceBasedSubscrition)
+                OnRewinEventSubscribe();
+        }
+
+        private IEnumerator UnSubRewindEventAfterAwhile()
+        {
+            yield return unsubWaitTime;
+            UnSubRewindEvents();
         }
 
         protected void UnSubRewindEvents()
         {
+            Debug.Log("UnSubbed");
             RewindHandler.RecoredEvent -= RecordData;
             RewindHandler.StartRewindEvent -= StartRewind;
             RewindHandler.RewindEvent -= Rewind;
             RewindHandler.EndRewindEvent -= EndRewind;
+
+            rewindSubscribed = false;
+            if(usingDistanceBasedSubscrition)
+                OnRewinEventUnSubscribe();
         }
     }
 }

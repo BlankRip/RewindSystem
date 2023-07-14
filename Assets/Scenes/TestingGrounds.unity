@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 15
 --- !u!135 &175229313
 SphereCollider:
@@ -250,7 +250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &329139165
 GameObject:
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 5
 --- !u!135 &329139167
 SphereCollider:
@@ -379,7 +379,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447645482
 GameObject:
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 5
 --- !u!135 &486669897
 SphereCollider:
@@ -583,7 +583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495794229
 GameObject:
@@ -705,6 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRecordArraySize: 150
+  rewindCenter: {fileID: 1029166555}
 --- !u!4 &557391064
 Transform:
   m_ObjectHideFlags: 0
@@ -718,7 +719,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581590133
 GameObject:
@@ -753,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 5
 --- !u!135 &581590135
 SphereCollider:
@@ -847,7 +848,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &599267074
 GameObject:
@@ -927,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 15
 --- !u!135 &634094764
 SphereCollider:
@@ -1021,7 +1022,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1150,7 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 15
 --- !u!135 &814609328
 SphereCollider:
@@ -1244,7 +1245,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &856373350
 GameObject:
@@ -1279,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 5
 --- !u!135 &856373352
 SphereCollider:
@@ -1367,13 +1368,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856373350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.02, y: 4.7, z: 0.81}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.104578495, y: 4.43, z: -0.27502865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1745297382}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1492,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 15
 --- !u!135 &1023352540
 SphereCollider:
@@ -1586,7 +1587,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1029166554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1029166555}
+  m_Layer: 0
+  m_Name: RewindCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1029166555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029166554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043826061
 GameObject:
@@ -1666,7 +1698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 5
 --- !u!135 &1153348230
 SphereCollider:
@@ -1760,7 +1792,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329335186
 GameObject:
@@ -1937,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordingFrameGap: 5
+  requiredDistanceToRewindCenter: 100
   initalForce: 15
 --- !u!135 &1497066194
 SphereCollider:
@@ -2025,13 +2057,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497066192}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.69, y: 8.42, z: -2.58}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.7745776, y: 8.15, z: -3.6650286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1745297382}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745297381
 GameObject:
@@ -2057,7 +2089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745297381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.915422, y: 0.27, z: 1.0850286}
+  m_LocalPosition: {x: 24.14, y: 0.27, z: 1.0850286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2067,6 +2099,8 @@ Transform:
   - {fileID: 1329335187}
   - {fileID: 599267075}
   - {fileID: 1043826062}
+  - {fileID: 856373356}
+  - {fileID: 1497066198}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
