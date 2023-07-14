@@ -20,7 +20,7 @@ namespace Blank.GamePlay
             rewindSubscribed = false;
             usingDistanceBasedSubscrition = true;
             unsubCoroutine = null;
-            unsubWaitTime = new WaitForSeconds(5.0f);
+            unsubWaitTime = new WaitForSeconds(RewindHandler.maxRewindTime);
         }
 
         protected void UpdateDistanceBasedSubscription()
@@ -50,7 +50,11 @@ namespace Blank.GamePlay
 
         protected virtual void EndRewind() { }
 
-        protected virtual void OnRewinEventSubscribe() { }
+        protected virtual void OnRewinEventSubscribe()
+        {
+            RecordData();
+        }
+
         protected virtual void OnRewinEventUnSubscribe() { }
 
         protected void SubRewindEvents()

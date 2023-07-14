@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 15
 --- !u!135 &175229313
 SphereCollider:
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 5
 --- !u!135 &329139167
 SphereCollider:
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 5
 --- !u!135 &486669897
 SphereCollider:
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa490f61775456b42a53611bd026a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRecordArraySize: 150
+  rewindTimeLimit: 5
   rewindCenter: {fileID: 1029166555}
 --- !u!4 &557391064
 Transform:
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 5
 --- !u!135 &581590135
 SphereCollider:
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 15
 --- !u!135 &634094764
 SphereCollider:
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 15
 --- !u!135 &814609328
 SphereCollider:
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 5
 --- !u!135 &856373352
 SphereCollider:
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 15
 --- !u!135 &1023352540
 SphereCollider:
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 5
 --- !u!135 &1153348230
 SphereCollider:
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0f12c0295a49a42ba428a3d875adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredDistanceToRewindCenter: 100
+  requiredDistanceToRewindCenter: 50
   initalForce: 15
 --- !u!135 &1497066194
 SphereCollider:

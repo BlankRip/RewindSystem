@@ -51,11 +51,6 @@ namespace Blank.GamePlay
             UpdateDistanceBasedSubscription();
         }
 
-        protected override void OnRewinEventSubscribe()
-        {
-            RecordData();
-        }
-
         protected override void OnRewinEventUnSubscribe()
         {
             recordList.Clear();
@@ -76,6 +71,7 @@ namespace Blank.GamePlay
 
         protected override void StartRewind()
         {
+            rb.useGravity = false;
             rb.velocity = Vector3.zero;
         }
 
@@ -90,6 +86,7 @@ namespace Blank.GamePlay
 
         protected override void EndRewind()
         {
+            rb.useGravity = true;
             rb.velocity = currentReadingRecordInstance.velocity;
         }
     }
