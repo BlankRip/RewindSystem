@@ -17,7 +17,6 @@ namespace Blank.GamePlay
 
         protected void SubRewindEvents()
         {
-            Debug.Log("Subbed");
             RewindHandler.RecoredEvent += RecordData;
             RewindHandler.StartRewindEvent += StartRewind;
             RewindHandler.RewindEvent += Rewind;
@@ -26,7 +25,6 @@ namespace Blank.GamePlay
 
         protected void UnSubRewindEvents()
         {
-            Debug.Log("UnSubbed");
             RewindHandler.RecoredEvent -= RecordData;
             RewindHandler.StartRewindEvent -= StartRewind;
             RewindHandler.RewindEvent -= Rewind;

@@ -12,10 +12,16 @@ namespace Blank.RewindSystem
         public static Action RewindEvent;
         public static Action EndRewindEvent;
         public static Action RecoredEvent;
-        public static int maxRecordArrayLength = 150;
+        public static int maxRecordArrayLength;
 
         private bool isRewinding;
         private InputAction rewindAction;
+        [SerializeField] uint maxRecordArraySize = 150;
+
+        private void Awake()
+        {
+            maxRecordArrayLength = (int)maxRecordArraySize;
+        }
 
         private void Start()
         {
