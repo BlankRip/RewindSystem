@@ -12,7 +12,7 @@ namespace Blank.RewindSystem
         public static Action RewindEvent;
         public static Action EndRewindEvent;
         public static Action RecoredEvent;
-        public static uint maxRecordArrayLength = 150;
+        public static int maxRecordArrayLength = 150;
 
         private bool isRewinding;
         private InputAction rewindAction;
@@ -27,21 +27,21 @@ namespace Blank.RewindSystem
             if(rewindAction.WasPressedThisFrame())
             {
                 isRewinding = true;
-                StartRewindEvent.Invoke();
+                StartRewindEvent?.Invoke();
             }
             else if(rewindAction.WasReleasedThisFrame())
             {
                 isRewinding = false;
-                EndRewindEvent.Invoke();
+                EndRewindEvent?.Invoke();
             }
         }
 
         private void FixedUpdate()
         {
             if(isRewinding)
-                RewindEvent.Invoke();
+                RewindEvent?.Invoke();
             else
-                RecoredEvent.Invoke();
+                RecoredEvent?.Invoke();
         }
 
         public bool IsRewinding()

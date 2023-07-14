@@ -5,28 +5,19 @@ using Blank.RewindSystem;
 
 namespace Blank.GamePlay
 {
-    public class RewindableBase : MonoBehaviour, IRewindable
+    public class RewindableBase : MonoBehaviour
     {
-        private void Start()
-        {
-            SubRewindEvents();
-        }
+        protected virtual void RecordData() { }
 
-        private void OnDestroy()
-        {
-            UnSubRewindEvents();
-        }
+        protected virtual void StartRewind() { }
 
-        public virtual void RecordData() { }
+        protected virtual void Rewind() { }
 
-        public virtual void StartRewind() { }
-
-        public virtual void Rewind() { }
-
-        public virtual void EndRewind() { }
+        protected virtual void EndRewind() { }
 
         protected void SubRewindEvents()
         {
+            Debug.Log("Subbed");
             RewindHandler.RecoredEvent += RecordData;
             RewindHandler.StartRewindEvent += StartRewind;
             RewindHandler.RewindEvent += Rewind;
@@ -35,6 +26,7 @@ namespace Blank.GamePlay
 
         protected void UnSubRewindEvents()
         {
+            Debug.Log("UnSubbed");
             RewindHandler.RecoredEvent -= RecordData;
             RewindHandler.StartRewindEvent -= StartRewind;
             RewindHandler.RewindEvent -= Rewind;
