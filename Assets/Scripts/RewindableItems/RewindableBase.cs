@@ -25,6 +25,9 @@ namespace Blank.GamePlay
 
         protected void UpdateDistanceBasedSubscription()
         {
+            if(RewindHandler.IsRewinding())
+                return;
+            
             distance = (transform.position - RewindHandler.rewindCenterPoint.position).sqrMagnitude;
             if(distance < requiredDistanceToRewindCenter)
             {

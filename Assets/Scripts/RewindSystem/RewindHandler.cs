@@ -16,7 +16,7 @@ namespace Blank.RewindSystem
         public static float maxRewindTime;
         public static Transform rewindCenterPoint;
 
-        private bool isRewinding;
+        private static bool isRewinding;
         private InputAction rewindAction;
         private float rewindTimer;
         [SerializeField] float rewindTimeLimit = 5f;
@@ -74,7 +74,7 @@ namespace Blank.RewindSystem
                 RecoredEvent?.Invoke();
         }
 
-        public bool IsRewinding()
+        public static bool IsRewinding()
         {
             return isRewinding;
         }
